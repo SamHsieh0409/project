@@ -24,10 +24,11 @@ public class User {
 	@Column(length = 50, nullable = false, unique = true)
 	private String username;
 	
-	@Column(length = 50, nullable = false, unique = true)
+	@Column(length = 50, nullable = false)
 	private String password;
-	
-
+			
+	@Column(length = 50, nullable = false)
+	private String role = "customer";
 	
 	
 }
