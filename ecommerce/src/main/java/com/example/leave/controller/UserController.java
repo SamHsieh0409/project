@@ -38,8 +38,11 @@ public class UserController {
 	
 	//員工註冊(從註冊頁面傳來的資訊)
 	@PostMapping("/register")
-	public String addUser(@RequestBody UserDTO userDTO, Model model) {
-		userService.addUser(userDTO);
+	public String addUser(@RequestParam String username,
+			            @RequestParam String password,
+			            @RequestParam(required = false) String role, 
+			            Model model) {
+		userService.addUser(username, password, role);
 		
 		model.addAttribute("message", "用戶註冊成功");
 		return "result";

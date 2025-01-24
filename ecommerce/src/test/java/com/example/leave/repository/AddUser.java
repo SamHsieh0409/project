@@ -1,8 +1,5 @@
 package com.example.leave.repository;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,16 +12,18 @@ import com.example.leave.service.UserService;
 public class AddUser {
 	
 	@Autowired
-	UserService userService;
+	UserRepository userRepository;
 	
 	@Test
 	public void test() {
 		try {
-			// 建立一個  物件
-			UserDTO userDTO = new UserDTO();
-			userDTO.setUsername("Andy");
-			userDTO.setPassword("111");
-			userService.addUser(userDTO);
+			// 建立一個 user 物件
+			User user = new User();
+			user.setUsername("Jenny");
+			user.setPassword("111");
+			
+			userRepository.save(user);
+			
 			System.out.println("新增完成");
 		} catch (Exception e) {
 			e.printStackTrace();
