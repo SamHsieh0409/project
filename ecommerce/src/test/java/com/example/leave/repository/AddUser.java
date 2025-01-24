@@ -7,28 +7,24 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
+import com.example.leave.model.dto.UserDTO;
 import com.example.leave.model.entity.User;
+import com.example.leave.service.UserService;
 
 @SpringBootTest
 public class AddUser {
 	
 	@Autowired
-	UserRepository userRepository;
+	UserService userService;
 	
 	@Test
 	public void test() {
 		try {
-			
-			
 			// 建立一個  物件
-			User user = new User();
-			user.setUsername("Tina");
-			user.setPassword("111");
-			user.setRole("admin");
-			
-			userRepository.save(user);
-			
+			UserDTO userDTO = new UserDTO();
+			userDTO.setUsername("Andy");
+			userDTO.setPassword("111");
+			userService.addUser(userDTO);
 			System.out.println("新增完成");
 		} catch (Exception e) {
 			e.printStackTrace();
